@@ -65,7 +65,7 @@ for i in range (100):
     # You will need to modify it to send a JSON structure, say something
     # like <timestamp, contents of top>
     #
-    producer.send ("Neighbors", get_fake_neighbor)
+    producer.send ("Neighbors", process)
     producer.flush ()   # try to empty the sending buffer
 
     # sleep a second
