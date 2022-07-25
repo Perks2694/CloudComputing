@@ -13,27 +13,49 @@
 #    information into a database OR just keeps displaying the incoming events on the
 #    command line consumer (or consumers)
 #
-
+from faker import Faker
 import os   # need this for popen
 import time # for sleep
+import json
 from kafka import KafkaProducer  # producer of events
+
+
+fake = Faker();
+
+def get_fake_neighbor():
+    return {
+        "Owner": fake.name(),
+        "address": fake.address(),
+        "Built in": fake.year()
+
+    }
+
+
+    if __name__ == "__main__":
+        print(get_fake_neighbor())
+
+
+def json_serializer(data):
+    return json.dumps(data).encode("utf-8")
+
 
 # We can make this more sophisticated/elegant but for now it is just
 # hardcoded to the setup I have on my local VMs
 
+
+
+
 # acquire the producer
 # (you will need to change this to your bootstrap server's IP addr)
-producer = KafkaProducer (bootstrap_servers="108.192.129.153:9092", 
+producer = KafkaProducer (bootstrap_servers="192.168.0.111:9092", value_serializer=json_serializer,
                                           acks=1)  # wait for leader to write to log
 
 # say we send the contents 100 times after a sleep of 1 sec in between
 for i in range (100):
     
     # get the output of the top command
-    process = os.popen ("top -n 1 -b")
-
-    # read the contents that we wish to send as topic content
-    contents = process.read ()
+    process = get_fake_neighbor()
+    
 
     # send the contents under topic utilizations. Note that it expects
     # the contents in bytes so we convert it to bytes.
@@ -43,7 +65,7 @@ for i in range (100):
     # You will need to modify it to send a JSON structure, say something
     # like <timestamp, contents of top>
     #
-    producer.send ("utilizations", value=bytes (contents, 'ascii'))
+    producer.send ("Neighbors", get_fake_neighbor)
     producer.flush ()   # try to empty the sending buffer
 
     # sleep a second
