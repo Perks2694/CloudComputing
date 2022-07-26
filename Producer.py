@@ -56,6 +56,7 @@ for i in range (100):
     # get the output of the top command
     process = get_fake_neighbor()
     
+    print(process)
 
     # send the contents under topic utilizations. Note that it expects
     # the contents in bytes so we convert it to bytes.
