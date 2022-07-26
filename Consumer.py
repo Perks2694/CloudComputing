@@ -14,16 +14,22 @@
 import os   # need this for popen
 import time # for sleep
 from kafka import KafkaConsumer  # consumer of events
+import json
 
 # We can make this more sophisticated/elegant but for now it is just
 # hardcoded to the setup I have on my local VMs
 
 # acquire the consumer
 # (you will need to change this to your bootstrap server's IP addr)
-consumer = KafkaConsumer (bootstrap_servers="10.0.2.15:9092")
+consumer = KafkaConsumer (
+    "Neighbors",
+    bootstrap_servers="10.0.2.15:9092",
+    auto_offset_reset="earliest",
+    group_id="group-a"
+)
 
-# subscribe to topic
-consumer.subscribe (topics=["Neighbors"])
+print("starting the consumer")
+
 
 # we keep reading and printing
 for msg in consumer:
@@ -38,7 +44,7 @@ for msg in consumer:
     # Note that I am not showing code to obtain the incoming data as JSON
     # nor am I showing any code to connect to a backend database sink to
     # dump the incoming data. You will have to do that for the assignment.
-    print (str(msg.value, 'ascii'))
+    print ("{} lives in the neighborhood".format(json.loads(msg.value)))
 
 # we are done. As such, we are not going to get here as the above loop
 # is a forever loop.
