@@ -42,7 +42,6 @@ for msg in consumer:
     # Note that I am not showing code to obtain the incoming data as JSON
     # nor am I showing any code to connect to a backend database sink to
     # dump the incoming data. You will have to do that for the assignment.
-    print ("Thing")
     print ("{} lives in the neighborhood".format(json.loads(msg.value)))
 
 # we are done. As such, we are not going to get here as the above loop
