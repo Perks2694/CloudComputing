@@ -47,8 +47,10 @@ def json_serializer(data):
 
 # acquire the producer
 # (you will need to change this to your bootstrap server's IP addr)
-producer = KafkaProducer (bootstrap_servers="10.0.2.15:9092", value_serializer=json_serializer,
-                                          acks=1)  # wait for leader to write to log
+producer = KafkaProducer (
+    bootstrap_servers="10.0.2.15:9092",
+    value_serializer=json_serializer,
+    )  # wait for leader to write to log
 
 # say we send the contents 100 times after a sleep of 1 sec in between
 for i in range (100):
@@ -70,7 +72,7 @@ for i in range (100):
     producer.flush ()   # try to empty the sending buffer
 
     # sleep a second
-    time.sleep (1)
+    time.sleep (3)
 
 # we are done
 producer.close ()
