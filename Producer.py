@@ -72,7 +72,7 @@ for i in range (100):
     producer.flush ()   # try to empty the sending buffer
 
     # sleep a second
-    time.sleep (3)
+    time.sleep (2)
 
 # we are done
 producer.close ()

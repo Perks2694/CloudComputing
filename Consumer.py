@@ -23,8 +23,7 @@ import json
 # (you will need to change this to your bootstrap server's IP addr)
 consumer = KafkaConsumer (
     "Neighbors",
-    bootstrap_servers="10.0.2.15:9092",
-    auto_offset_reset="earliest"
+    bootstrap_servers="10.0.2.15:9092"
 )
 
 print("starting the consumer")
