@@ -27,7 +27,7 @@ consumer = KafkaConsumer (
     bootstrap_servers="129.114.26.25:9092"
 )
 couch = couchdb.Server('https://cperkinsyan:couchdbpassword@127.0.0.1:5984/')
-db=couch.create('Neighbors')
+#db=couch.create('Neighbors')
 print("Database Created, starting the consumer")
 
 
