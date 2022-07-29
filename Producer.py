@@ -52,7 +52,7 @@ producer = KafkaProducer (
     value_serializer=json_serializer,
     )  # wait for leader to write to log
 
-# say we send the contents 100 times after a sleep of 1 sec in between
+# say we send the contents 100 times after a slPythoeep of 1 sec in between
 for i in range (100):
     
     # get the output of the top command
