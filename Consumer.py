@@ -47,7 +47,8 @@ for msg in consumer:
     #
     # convert the value field into string (ASCII)
     #
-    db.save(msg)
+    entry = json.loads(msg.value)
+    db.save(entry)
 
     
     # Note that I am not showing code to obtain the incoming data as JSON
