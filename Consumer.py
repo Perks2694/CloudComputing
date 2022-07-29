@@ -30,7 +30,7 @@ couch = couchdb.Server('http://127.0.0.1:5984/')
 
 couch.resource.credentials = ("cperkinsyan","couchdbpassword");
 
-db=couch.create('Neighbors')
+db=couch.create('neighbors')
 
 print("Database Created, starting the consumer")
 
