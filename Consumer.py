@@ -13,7 +13,7 @@
 
 import os   # need this for popen
 import time # for sleep
-from kafka import KafkaConsumer  # consumer of events
+import KafkaConsumer  # consumer of events
 import json
 import couchdb
 
@@ -28,12 +28,11 @@ consumer = KafkaConsumer (
 )
 couch = couchdb.Server('http://127.0.0.1:5984/')
 
-couch.resource.credentials = ("cperkinsyan","couchdbpassword")
+couch.resource.credentials = ("cperkinsyan","couchdbpassword");
 
-try:
-    db = couch['neighbors']
-except:
-    db=couch.create('neighbors')
+db = couch['neighbors']
+
+#db=couch.create('neighbors')
 
 print("Database Created, starting the consumer")
 
