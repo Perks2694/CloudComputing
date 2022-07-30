@@ -13,7 +13,7 @@
 
 import os   # need this for popen
 import time # for sleep
-import KafkaConsumer  # consumer of events
+from kafka import KafkaConsumer  # consumer of events
 import json
 import couchdb
 
