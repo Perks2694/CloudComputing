@@ -28,7 +28,7 @@ consumer = KafkaConsumer (
 )
 couch = couchdb.Server('http://127.0.0.1:5984/')
 
-couch.resource.credentials = ("cperkinsyan","couchdbpassword");
+couch.resource.credentials = ("cperkinsyan","couchdbpassword")
 
 try:
     db = couch['neighbors']
