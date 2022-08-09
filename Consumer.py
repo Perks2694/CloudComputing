@@ -22,10 +22,10 @@ import couchdb
 
 # acquire the consumer
 # (you will need to change this to your bootstrap server's IP addr)
-#consumer = KafkaConsumer (
-#    "Neighbors",
-#    bootstrap_servers="129.114.26.25:9092"
-#)
+consumer = KafkaConsumer (
+    "Neighbors",
+    bootstrap_servers="129.114.26.25:9092"
+)
 #couch = couchdb.Server('http://127.0.0.1:5984/')
 
 #couch.resource.credentials = ("cperkinsyan","couchdbpassword");
