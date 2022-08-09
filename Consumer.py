@@ -22,19 +22,19 @@ import couchdb
 
 # acquire the consumer
 # (you will need to change this to your bootstrap server's IP addr)
-consumer = KafkaConsumer (
-    "Neighbors",
-    bootstrap_servers="129.114.26.25:9092"
-)
-couch = couchdb.Server('http://127.0.0.1:5984/')
+#consumer = KafkaConsumer (
+#    "Neighbors",
+#    bootstrap_servers="129.114.26.25:9092"
+#)
+#couch = couchdb.Server('http://127.0.0.1:5984/')
 
-couch.resource.credentials = ("cperkinsyan","couchdbpassword");
+#couch.resource.credentials = ("cperkinsyan","couchdbpassword");
 
-db = couch['neighbors']
+#db = couch['neighbors']
 
 #db=couch.create('neighbors')
 
-print("Database Created, starting the consumer")
+print(" starting the consumer")
 
 
 
@@ -50,7 +50,7 @@ for msg in consumer:
     # convert the value field into string (ASCII)
     #
     entry = json.loads(msg.value)
-    db.save(entry)
+    #db.save(entry)
 
     
     # Note that I am not showing code to obtain the incoming data as JSON
